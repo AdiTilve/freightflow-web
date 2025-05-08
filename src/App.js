@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar'; // <-- global
+import HomePage from './pages/HomePage';
+import AssignmentsPage from './pages/AssignmentsPage';
+import FlightsPage from './pages/FlightsPage';
+import ParkingPage from './pages/ParkingPage';
+import CargoPage from './pages/CargoPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar /> {/* Global navbar here */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/assignments" element={<AssignmentsPage />} />
+        <Route path="/flights" element={<FlightsPage />} />
+        <Route path="/parking" element={<ParkingPage />} />
+        <Route path="/cargo" element={<CargoPage />} />
+      </Routes>
+    </Router>
   );
 }
 
