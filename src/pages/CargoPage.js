@@ -20,7 +20,11 @@ const CargoPage = () => {
   }, []);
 
   const fetchCargoData = () => {
-    fetch('/cargo')
+    fetch('/cargo',
+      {method: "GET",
+        credentials: "omit"
+      }
+    )
       .then(res => res.json())
       .then(data => {
         const sorted = (Array.isArray(data) ? data : Object.values(data)).sort((a, b) => {
@@ -62,10 +66,10 @@ const CargoPage = () => {
     };
 
     if (endpoint) {
-      const fullUrl = `http://localhost:8080${endpoint}`;
+      const fullUrl = `https://freightflow-backend-343038966142.us-central1.run.app${endpoint}`;
       console.log('Sending POST request to:', fullUrl);
 
-      fetch(fullUrl, { method: 'POST' })
+      fetch(fullUrl, { method: 'POST', credentials: 'omit'})
         .then(res => {
           if (!res.ok) throw new Error('Request failed');
           finalize();
