@@ -13,7 +13,9 @@ let stompClient = null;
  * @param {(flight: Object) => void} [handlers.onUpdateFlight]
  */
 export const connectWebSocket = ({ onDelete, onCreate, onUpdate, onUpdateFlight }) => {
-  const socket = new SockJS('/ws');
+  const socket = new SockJS('https://freightflow-backend-343038966142.us-central1.run.app/ws', null, {
+    withCredentials: false
+  });
   stompClient = new Client({
     webSocketFactory: () => socket,
     reconnectDelay: 5000,

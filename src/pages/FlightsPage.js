@@ -26,7 +26,11 @@ const FlightsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/flights')
+    fetch('/flights',
+      {method: "GET",
+        credentials: "omit"
+      }
+    )
       .then(res => res.json())
       .then(data => {
         setFlights(Object.values(data));

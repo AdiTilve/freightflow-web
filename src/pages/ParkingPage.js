@@ -19,7 +19,11 @@ const ParkingPage = () => {
   }, []);
 
   const fetchParkingData = () => {
-    fetch('/parking')
+    fetch('/parking',
+      {method: "GET",
+        credentials: "omit"
+      }
+    )
       .then(res => res.json())
       .then(data => {
         const sorted = (Array.isArray(data) ? data : Object.values(data)).sort((a, b) => {
@@ -66,7 +70,7 @@ const ParkingPage = () => {
       console.log('Sending POST request to:', fullUrl);
       console.log('Truck ID:', truckID, 'Bay ID:', id, 'New State:', state);
 
-      fetch(fullUrl, { method: 'POST' })
+      fetch(fullUrl, { method: 'POST', credentials: 'omit' })
         .then(res => {
           if (!res.ok) throw new Error('Request failed');
           finalize();

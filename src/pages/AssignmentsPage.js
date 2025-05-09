@@ -56,7 +56,11 @@ const AssignmentsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/api/assignments')
+    fetch('/api/assignments',
+      {method: "GET",
+        credentials: "omit"
+      }
+    )
       .then(res => res.json())
       .then(data => {
         setAssignments(Object.values(data));
@@ -69,7 +73,11 @@ const AssignmentsPage = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/flights')
+    fetch('/flights',
+      {method: "GET",
+        credentials: "omit"
+      }
+    )
       .then(res => res.json())
       .then(data => {
         setFlights(Object.values(data));
